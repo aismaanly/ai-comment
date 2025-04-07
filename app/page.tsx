@@ -11,7 +11,7 @@ import aiPrompt from "../components/AIPrompt";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [postDescription, setPostDescription] = useState("");
-  const [model, setModel] = useState<ModelType>("mistralai/Mixtral-8x7B-Instruct-v0.1");
+  const [model, setModel] = useState<ModelType>("meta-llama/Llama-3.3-70B-Instruct-Turbo-Free");
   const [generatedComments, setGeneratedComments] = useState<String>("");
 
   const commentRef = useRef<null | HTMLDivElement>(null);
