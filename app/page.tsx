@@ -102,18 +102,18 @@ export default function Home() {
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
                 {generatedComments
-                  .substring(generatedComments.indexOf("1") + 3)
-                  .split(/2\.|3\./)
-                  .map((generatedComment) => (
+                  .split(/^\d\.\s+/m)
+                  .slice(1) 
+                  .map((generatedComment, index) => (
                     <div
                       className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
                       onClick={() => {
-                        navigator.clipboard.writeText(generatedComment);
-                        toast("Comment copied to clipboard", { icon: "✂️" });
+                        navigator.clipboard.writeText(generatedComment.trim()); 
+                        toast(`Comment ${index + 1} copied to clipboard`, { icon: "✂️" });
                       }}
-                      key={generatedComment}
+                      key={index}
                     >
-                      <p>{generatedComment}</p>
+                      <p>{generatedComment.trim()}</p>
                     </div>
                   ))}
               </div>
